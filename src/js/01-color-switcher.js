@@ -12,8 +12,10 @@ const changeBackgroundColor = color => {
 
 startBtn.addEventListener('click', () => {
   intervalId = setInterval(changeBackgroundColor, 1000);
+  startBtn.setAttribute('disabled', true);
 });
 
 stopBtn.addEventListener('click', () => {
   clearInterval(intervalId);
+  startBtn.removeAttribute('disabled');
 });
