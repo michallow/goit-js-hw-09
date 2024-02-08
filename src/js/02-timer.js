@@ -34,14 +34,22 @@ startBtn.addEventListener('click', () => {
   }, 1000);
 });
 
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
+
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
 
-  daysSpan.textContent = Math.floor(ms / day);
-  hoursSpan.textContent = Math.floor((ms % day) / hour);
-  minutesSpan.textContent = Math.floor(((ms % day) % hour) / minute);
-  secondsSpan.textContent = Math.floor((((ms % day) % hour) % minute) / second);
+  daysSpan.textContent = addLeadingZero(Math.floor(ms / day));
+  hoursSpan.textContent = addLeadingZero(Math.floor((ms % day) / hour));
+  minutesSpan.textContent = addLeadingZero(
+    Math.floor(((ms % day) % hour) / minute)
+  );
+  secondsSpan.textContent = addLeadingZero(
+    Math.floor((((ms % day) % hour) % minute) / second)
+  );
 }
